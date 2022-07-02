@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width = device-width initial-scale = 1.0">
+        <link rel="stylesheet" href="css/all.min.css" type="text/css" media="all" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Sarauniya Fashion</title>
+        <link rel="shortcut icon" href="4.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+        
+        <style type="text/css" media="all">
+            *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(245, 205, 229);
+            text-align: center;
+            padding: 10px;
+        }
+        
+        header{
+            grid-area: header;
+            display: flex;
+            position: relative;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        #nav ul{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #nav li{
+            display: inline-block;
+            list-style: none;
+            padding: 10px;
+        }
+
+        #nav li a{
+            text-decoration: none;
+            color: #000;
+        }
+
+        #nav li a:hover{
+            text-decoration: underline;
+        }
+        
+        #blog{
+            padding: 10px;
+            grid-area: blog;
+            position: relative;
+            left: -10px;
+            right: -10px;
+            display: flex;
+            background-color: white;
+            width: 100%;
+            height: 50px;
+        }
+
+        #blog h1{
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        #blog p{
+            position: absolute;
+            top: 25px;
+            right: 28px;
+            color: gray;
+        }
+        
+        main{
+            text-align: left;
+        }
+        
+        main p{
+            font-family: cursive;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        main a{
+            text-decoration: none;
+            font-weight: bold;
+            padding: 2px 10px;
+            background: #FF00E8;
+            border-radius: 5px;
+            color: #fff;
+        }
+        
+        footer{
+            grid-area: footer;
+            position: relative;
+            left: -10px;
+            display: flex;
+            gap: 10%;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            width: 100%;
+        }
+
+        footer p{
+            line-height: 30px;
+        }
+
+        footer a{
+            color: #000;
+            text-decoration: none;
+        }
+
+        footer a:hover{
+            text-decoration: underline;
+        }
+
+        footer img{
+            width: 20px;
+            height: 20px;
+        }
+        
+        #social{
+            width: 200px;
+            display: flex;
+        }
+
+        #social a{
+            width: 25%;
+            font-size: 2rem;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            text-decoration: none;
+            border-radius: 5px;
+            background-color: white;
+            margin: 10px;
+            padding: 5px;
+            transition: 0.4s;
+            box-shadow: 3px 3px 5px gray, -3px -3px 5px white;
+        }
+
+        #social a:hover{
+            transform: translateY(-10px);
+        }
+
+        #brand p{
+            white-space: nowrap;
+            color: gray;
+        }
+        
+        header h1, span{
+            font-family: 'Lobster', cursive;
+            color: #FF00E8;
+
+        }
+        
+        span{
+            letter-spacing: 5px;
+            color: #FF00E8;
+        }
+        
+        #banner{
+            width: 350px;
+            height: 500px;
+        }
+        
+        
+
+        /* Mobile responsiveness*/
+
+        @media (max-width:500px) {
+            
+            
+            h1{
+                font-size: 20px;
+            }
+            
+            h3{
+                font-size: 15px;
+            }
+            
+            h4{
+                font-size: 15px;
+            }
+            
+            #nav li{
+                padding: 2px;
+            }
+            
+            #nav ul{
+                right: 0;
+            }
+            
+            #blog{
+                left: -8px;
+                height: none;
+                padding: 3px;
+                width: 103%;
+            }
+            
+            #blog p{
+                right: 0;
+                top: 15px;
+            }
+            
+            section div img{
+                width: 80px;
+                height: 80px;
+            }
+
+            footer{
+                display: inline-block;
+                gap: 5%;
+                width: 94%;
+                margin-bottom: -10px;
+            }
+
+            #brand p{
+                white-space: normal;
+            }
+        }
+        </style>
+        
+    </head>
+    <body>
+        <header>
+            <h1>Sarauniya</h1>
+
+            <div id="nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div id="blog">
+            <h1>Blog</h1>
+            <p>Get the latest fashion updates.</p>
+        </div>
+        
+        <br /><br /><br />
+        
+        <main>
+            <h3>Welcome To <span>SARAUNIYA</span> Fashion</h3>
+            
+            
+            <img id="banner" src="4.png" alt="" />
+            <p>We sell and offer the best quality Hijab Materials</p>
+            <a href="home.html">Goto Store</a>
+        </main>
+        
+        
+        <br /><br /><br />
+        
+        <footer>
+            <div id="brand">
+                <h3>Sarauniya.</h3>
+                
+                <p>&copy; 2022 All Right Reserved</p>
+            </div><br />
+
+            <div id="about">
+                <h3>About Us</h3>
+                
+                <p>Sarauniya fashion specializes in fashion wears.</p>
+                <p>We are located in Nassarawa Kaduna.</p>
+            </div><br />
+
+            <div id="product">
+                <h3>Product</h3>
+                
+                <p>Jalbab fashion wears.</p>
+            </div>
+            <br />
+            
+            <div id="contact">
+                <h3>Contact Us</h3>
+                
+                <a href="mailto:bilkisumikailu22@gmail.com">bilkisumikailu22@gmail.com</a>
+                <br>
+                <a href="tel:+234 708 363 3177">+234 708 363 3177</a>
+                <br><br>
+                <div id="social">
+                    <a href="https://www.facebook.com/bilqees.mikail"><i class="fa-brands fa-facebook" style="color:#13A0F9"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram" style="color:#DE4C52"></i></a>
+                    <a href="http://api.whatsapp.com/send?phone=2347083633177"><i class="fa-brands fa-whatsapp" style="color:#3DD200"></i></a>
+                </div>
+                
+            </div>
+        </footer>
+    </body>
+</html>

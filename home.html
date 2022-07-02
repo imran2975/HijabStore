@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" onload="load()">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css" type="text/css" media="all" />
+    <link rel="shortcut icon" href="4.png" />
+    <title>Sarauniya Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+    
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(245, 205, 229);
+            text-align: center;
+            padding: 10px;
+        }
+        /* Grid Layout*/
+        #content{
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(50px, auto);
+            gap: 10px;
+            margin: 0 auto;
+            grid-template-areas: 
+            "header header header"
+            "blog blog blog"
+            ". . ."
+            "nav main main"
+            ". main main"
+            "aside main main"
+            ". main main"
+            "section main main"
+            ". . ."
+            "footer footer footer"
+            ;
+        }
+
+        header{
+            grid-area: header;
+            display: flex;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        #nav ul{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        #nav li{
+            display: inline-block;
+            list-style: none;
+            padding: 10px;
+        }
+
+        #nav li a{
+            text-decoration: none;
+            color: #000;
+        }
+
+        #nav li a:hover{
+            text-decoration: underline;
+        }
+
+        main{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: minmax(30px, 470px);
+            grid-area: main;
+            gap: 10px;
+            text-align: left;
+        }
+
+        .one,
+        .two,
+        .three,
+        .four,
+        .five,
+        .six{
+            border: 3px solid #fff;
+        }
+
+        .one img,
+        .two img,
+        .three img,
+        .four img,
+        .five img,
+        .six img{
+            width: 100%;
+            height: 60%;
+            object-fit: fill;
+        }
+
+        #main-content{
+            padding: 20px;
+            background: #fff;
+            height: 206px;
+        }
+
+        main p{
+            color: gray;
+            line-height: 20px;
+        }
+        
+        main a{
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 20px;
+            background: #FF00E8;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        button{
+            padding: 3px;
+        }
+
+        nav{
+            grid-area: nav;
+        }
+
+        #search{
+            padding: 15px;
+            border-radius: 20px;
+            border: none;
+            width: 100%;
+        }
+
+        #nav-content{
+            background-color: #fff;
+            border-radius: 10px;
+            line-height: 50px;
+            text-align: left;
+            padding: 20px;
+        }
+
+        #nav-content li{
+            list-style: none;
+        }
+
+        #nav-content li a{
+            text-decoration: none;
+            color: #000;
+        }
+
+        #nav-content li a:hover{
+            text-decoration: underline;
+        }
+
+        aside{
+            grid-area: aside;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        aside div{
+            display: flex;
+            gap: 10px;
+        }
+
+        section{
+            grid-area: section;
+            text-align: left;
+            background-color: #fff;
+            padding: 20PX;
+            border-radius: 10px;
+        }
+
+        section div{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        section div img{
+            width: 130px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        #blog{
+            padding: 10px;
+            grid-area: blog;
+            position: relative;
+            left: -10px;
+            right: -10px;
+            display: flex;
+            background-color: white;
+            width: 100%;
+            height: 50px;
+        }
+
+        #blog h1{
+            position: absolute;
+            top: 15px;
+            left: 20px;
+        }
+
+        #blog p{
+            position: absolute;
+            top: 25px;
+            right: 28px;
+            color: gray;
+        }
+
+        footer{
+            grid-area: footer;
+            position: relative;
+            left: -10px;
+            display: flex;
+            gap: 10%;
+            text-align: left;
+            background-color: #fff;
+            padding: 20px;
+            width: 100%;
+        }
+
+        footer p{
+            line-height: 30px;
+        }
+
+        footer a{
+            color: #000;
+            text-decoration: none;
+        }
+
+        footer a:hover{
+            text-decoration: underline;
+        }
+
+        footer img{
+            width: 20px;
+            height: 20px;
+        }
+
+        #brand p{
+            white-space: nowrap;
+            color: gray;
+        }
+        
+        #social{
+            width: 200px;
+            display: flex;
+        }
+
+        #social a{
+            width: 25%;
+            font-size: 2rem;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            text-decoration: none;
+            border-radius: 5px;
+            background-color: white;
+            margin: 10px;
+            padding: 5px;
+            transition: 0.4s;
+            box-shadow: 3px 3px 5px gray, -3px -3px 5px white;
+        }
+
+        #social a:hover{
+            transform: translateY(-10px);
+        }
+        
+        header h1{
+            font-family: 'Lobster', cursive;
+            color: #FF00E8;
+        }
+
+        /* Mobile responsiveness*/
+
+        @media (max-width:500px) {
+            #content{
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-auto-rows: minmax(30px, auto);
+                gap: 10px;
+                margin: 0 auto;
+                grid-template-areas: 
+                "header"
+                "blog"
+                "."
+                "nav"
+                "."
+                "main"
+                "."
+                "aside"
+                "section"
+                "footer"
+                ;
+            }
+
+            main{
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-auto-rows: minmax(0, 620px);
+                grid-area: main;
+                gap: 10px;
+                text-align: left;
+                
+            }
+            
+            .one img,
+            .four img,
+            .five img{
+                width: 80%;
+                height: 60%;
+                object-fit: fill;
+                margin-left: 50px;
+            }
+            
+            #main-content{
+                line-height: 25px;
+            }
+            
+            h1{
+                font-size: 20px;
+            }
+            
+            h3{
+                font-size: 15px;
+            }
+            
+            h4{
+                font-size: 15px;
+            }
+            
+            #nav li{
+                padding: 2px;
+            }
+            
+            #nav ul{
+                right: 0;
+            }
+            
+            #blog{
+                left: -8px;
+                height: none;
+                padding: 3px;
+                width: 103%;
+            }
+            
+            #blog p{
+                right: 0;
+                top: 15px;
+            }
+            
+            section div{
+                grid-template-columns: repeat(2, 1fr);
+                overflow-x: scroll;
+                width: 300px;
+                height: 200px;
+            }
+            
+            section div img{
+                width: 140px;
+                height: 180px;
+                border-radius: 10px;
+            }
+
+            footer{
+                display: inline-block;
+                gap: 5%;
+                width: 94%;
+                margin-bottom: -20px;
+            }
+
+            #brand p{
+                white-space: normal;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <header>
+            <h1>Sarauniya</h1>
+
+            <div id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#aside">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div id="blog">
+            <h1>Blog</h1>
+            <p>Get the latest fashion updates.</p>
+        </div>
+
+        <main>
+            <div class="card one" id="hijab">
+                <img src="1.png" alt="">
+                <div id="main-content">
+
+                    <h4>Jalbab Hijab Orange</h4>
+                    <p>Jalbab Hijabs makes you feel comfortable.</p>
+                    <br />
+                    <p>3yard: 3500 naira</p>
+                    <p>3½yard: 3700 naira</p>
+                    <p>4yard: 4000 naira</p>
+                    <br>
+                    <a onclick="condition()" href="http://api.whatsapp.com/send?phone=2347083633177&text=Hi%20Sarauniya%20Fashion.%20i%20want%20to%20buy%20Jalbab%20Hijab%20Orange%20color%20_______yard">BUY</a>
+                </div>
+            </div>
+
+            <div class="card two">
+                <img src="7.jpg" alt="">
+                <div id="main-content">
+
+                    <h4>Jalbab Hijab</h4>
+                    <p>Jalbab Hijabs makes you feel comfortable.</p>
+                    <br />
+                    <p>3yard: 3500 naira</p>
+                    <p>3½yard: 3700 naira</p>
+                    <p>4yard: 4000 naira</p>
+                    <br><a onclick="condition()" href="http://api.whatsapp.com/send?phone=2347083633177&text=Hi%20Sarauniya%20Fashion.%20i%20want%20to%20buy%20Jalbab%20Hijab%20_______yard">BUY</a>
+                </div>
+            </div>
+
+            <div class="card three">
+                <img src="8.jpg" alt="">
+                <div id="main-content">
+
+                    <h4>Jalbab Hijabs</h4>
+                    <p>Jalbab Hijabs makes you feel comfortable.</p>
+                    <br />
+                    <p>3yard: 3500 naira</p>
+                    <p>3½yard: 3700 naira</p>
+                    <p>4yard: 4000 naira</p>
+                    <br><a onclick="condition()" href="http://api.whatsapp.com/send?phone=2347083633177&text=Hi%20Sarauniya%20Fashion.%20i%20want%20to%20buy%20Jalbab%20Hijab%20_______yard">BUY</a>
+                </div>
+            </div>
+
+            <div class="card four">
+                <img src="4.png" alt="">
+                <div id="main-content">
+
+                    <h4>Jalbab Hijab Pink</h4>
+                    <p>Jalbab Hijabs makes you feel comfortable.</p>
+                    <br />
+                    <p>3yard: 3500 naira</p>
+                    <p>3½yard: 3700 naira</p>
+                    <p>4yard: 4000 naira</p>
+                    <br><a onclick="condition()" href="http://api.whatsapp.com/send?phone=2347083633177&text=Hi%20Sarauniya%20Fashion.%20i%20want%20to%20buy%20Jalbab%20Hijab%20Pink%20color%20_______yard">BUY</a>
+                </div>
+            </div>
+
+            <div class="card five">
+                <img src="5.png" alt="">
+                <div id="main-content">
+
+                    <h4>Jalbab Hijab</h4>
+                    <p>Jalbab Hijabs makes you feel comfortable.</p>
+                    <br />
+                    <p>3yard: 3500 naira</p>
+                    <p>3½yard: 3700 naira</p>
+                    <p>4yard: 4000 naira</p>
+                    <br><a onclick="condition()" href="http://api.whatsapp.com/send?phone=2347083633177&text=Hi%20Sarauniya%20Fashion.%20i%20want%20to%20buy%20Jalbab%20Hijab%20_______yard">BUY</a>
+                </div>
+            </div>
+
+            <div class="card six">
+                <img id="material" src="g6.jpg" alt="">
+                <div id="main-content">
+
+                    <h4>Jalbab Hijab Materials</h4>
+                    <p>Jalbab Hijabs makes you feel comfortable.</p>
+                    <br />
+                    <p>Plain material</p>
+                    <p>1yard: 800 naira</p>
+                    <br><a onclick="condition()" href="http://api.whatsapp.com/send?phone=2347083633177&text=Hi%20Sarauniya%20Fashion.%20i%20want%20to%20buy%20Jalbab%20Hijab%20Material%20_______yard">BUY</a>
+                </div>
+            </div>
+        </main>
+
+        <nav>
+            <input type="search" name="search" id="search" placeholder="Search Here">
+            <br><br><br>
+            <div id="nav-content">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#hijab">Hijabs</a></li>
+                    <li><a onclick="notAvailable()" href="#">Abayas</a></li>
+                    <li><a href="#material">Hijab Materials</a></li>
+                
+                </ul>
+            </div>
+        </nav>
+
+        <aside id="aside">
+            <h3>Services</h3>
+            <br>
+            <div>
+                <h1>1</h1>
+                <p>We sell high quality Materials in different sizes</p>
+            </div>
+            <br>
+            <div>
+                <h1>2</h1>
+                <p>All Materials are available in both customer and retailer's price</p>
+            </div>
+            <br>
+            <div>
+                <h1>3</h1>
+                <p>When you buy in bulk, you get to access our discount and free delivery service</p>
+            </div>
+        </aside>
+
+        <section>
+            <h3>Gallery</h3>
+            <br>
+            <div>
+                <img src="g1.jpg" alt="hi">
+                <img src="g2.jpg" alt="hello">
+                <img src="g3.jpg" alt="hii">
+                <img src="g4.jpg" alt="helloo">
+                <img src="g5.jpg" alt="so">
+                <img src="g7.jpg" alt="ok">
+                <img src="g14.jpg" alt="" />
+                <img src="g8.jpg" alt="" />
+                <img src="g9.jpg" alt="" />
+                <img src="g10.jpg" alt="" />
+                <img src="g11.jpg" alt="" />
+                <img src="g12.jpg" alt="" />
+                <img src="g13.jpg" alt="" />
+                <img src="g15.jpg" alt="" />
+            </div>
+        </section>
+
+        <footer>
+            <div id="brand">
+                <h3>Sarauniya.</h3>
+                
+                <p>&copy; 2022 All Right Reserved</p>
+            </div><br />
+
+            <div id="about">
+                <h3>About Us</h3>
+                
+                <p>Sarauniya fashion specializes in fashion wears.</p>
+                <p>We are located in Nassarawa Kaduna.</p>
+            </div><br />
+
+            <div id="product">
+                <h3>Product</h3>
+                
+                <p>Jalbab fashion wears.</p>
+            </div>
+            <br />
+            
+            <div id="contact">
+                <h3>Contact Us</h3>
+                
+                <a href="mailto:bilkisumikailu22@gmail.com">bilkisumikailu22@gmail.com</a>
+                <br>
+                <a href="tel:+234 708 363 3177">+234 708 363 3177</a>
+                <br><br>
+                <div id="social">
+                    <a href="https://www.facebook.com/bilqees.mikail"><i class="fa-brands fa-facebook" style="color:#13A0F9"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram" style="color:#DE4C52"></i></a>
+                    <a href="http://api.whatsapp.com/send?phone=2347083633177"><i class="fa-brands fa-whatsapp" style="color:#3DD200"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script type="text/javascript" charset="utf-8">
+    
+     window.onload = function(){ alert("There are limited features on the Site                             Press Ok to continue"); } 
+        
+        function notAvailable() {
+            alert("Not Yet Available")
+        }
+        
+        function condition() {
+            confirm("Site under development, so Payment are made through WhatsApp")
+        }
+    </script>
+</body>
+</html>
